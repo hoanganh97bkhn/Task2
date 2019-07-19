@@ -82,3 +82,11 @@ export const handleDel = (data) => {
         data
     }
 }
+
+export const openModalShow = (item) => {
+    console.log(item)
+    return {
+        type : types.OPEN_MODAL_SHOW,
+        data : item
+    }
+}

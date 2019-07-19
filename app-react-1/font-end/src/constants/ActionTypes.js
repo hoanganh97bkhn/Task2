@@ -12,3 +12,4 @@ export const DEL_IMAGE = "DEL_IMAGE";
 export const API_DEL_IMAGE = "API_DEL_IMAGE";
 export const DEL_SUCCESS = "DEL_SUCCESS";
 export const SHOW_DATA = "SHOW_DATA";
+export const OPEN_MODAL_SHOW ="OPEN_MODAL_SHOW"

@@ -60,6 +60,10 @@ class Box extends Component {
       })
     }
 
+    onClickDetail = (item) => {
+      this.props.openModalShow(item);
+    }
+
     render() {
         return (
           <div className="themes container">
@@ -75,7 +79,7 @@ class Box extends Component {
                   </div>
                 <div className="view container btn-group-vertical" /*style={{display:  this.state.showStore === index ? 'block' : 'inline-flex' }}*/>
                   <button className="btn btn-danger d-block my-3 w-75 mx-auto">Xem DeMo</button>
-                  <button className="btn btn-primary d-block w-75 mx-auto">Xem Chi Tiet</button>
+                  <button className="btn btn-primary d-block w-75 mx-auto" onClick={(e)=>{this.onClickDetail(item)}}>Xem Chi Tiet</button>
                   {this.props.onSingIn ? <button className="btn btn-danger d-block mt-3 w-75 mx-auto" onClick={ (e) => {this.toggleModalFiles(index)}}>Sửa</button> : null}                  
                 </div>
                 {this.props.delImage ? 
@@ -90,7 +94,10 @@ class Box extends Component {
                 </div>
                 ) : null }
                 </div>
-                <div><b>Mẫu Giao Diện {index+1}</b></div>
+                <div ><b>Mẫu Giao Diện {index+1}</b></div>
+                <div> <b>Name </b>: {item.name} </div>
+                <div> <b>Author </b>: {item.author} </div>
+                <div> <b>Price </b>: {item.price} VND </div>
             </div>
               ))}
               
@@ -123,6 +130,9 @@ const mapDispatchToProps = (dispatch, props) => {
     handleDel : (data) => {
       dispatch(actions.handleDel(data))
     },
+    openModalShow : (item) => {
+      dispatch(actions.openModalShow(item))
+    }
   }
 }
 

@@ -64,7 +64,10 @@ const formidable = require("formidable");
   
           dataImage.push({
               id: dataImage.length,
-              name: fileName[fileName.length-1].name,
+              name: fields["name"],
+              description : fields["description"],
+              price : fields["price"],
+              author : fields["author"],
               path: fileName[fileName.length-1].path,
               imageUrl : fileName[fileName.length-1].path.replace("public/" ,""),
               model: Math.floor(Math.random() * 2),
@@ -91,7 +94,10 @@ const formidable = require("formidable");
   
           dataImage.push({
               id: dataImage.length,
-              name: arrayOfFiles.name,
+              name: fields["name"],
+              description : fields["description"],
+              price : fields["price"],
+              author : fields["author"],
               path: arrayOfFiles.path,
               imageUrl : arrayOfFiles.path.replace("public/" ,""),
               model: Math.floor(Math.random() * 2),
@@ -157,7 +163,10 @@ const formidable = require("formidable");
             console.error(err)
           }
 
-          dataImage[temp].name = fileName[fileName.length-1].name;
+          dataImage[temp].name= fields["name"],
+          dataImage[temp].description = fields["description"],
+          dataImage[temp].price = fields["price"],
+          dataImage[temp].author = fields["author"],
           dataImage[temp].path = fileName[fileName.length-1].path;
           dataImage[temp].imageUrl = fileName[fileName.length-1].path.replace("public/" ,""),
           dataImage[temp].model = Math.floor(Math.random() * 2);
@@ -194,7 +203,10 @@ const formidable = require("formidable");
             console.error(err)
           }
           
-          dataImage[temp].name = arrayOfFiles.name;
+          dataImage[temp].name= fields["name"],
+          dataImage[temp].description = fields["description"],
+          dataImage[temp].price = fields["price"],
+          dataImage[temp].author = fields["author"],
           dataImage[temp].path = arrayOfFiles.path;
           dataImage[temp].imageUrl = arrayOfFiles.path.replace("public/" ,""),
           dataImage[temp].model = Math.floor(Math.random() * 2);

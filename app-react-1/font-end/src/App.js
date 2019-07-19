@@ -8,6 +8,7 @@ import OptionMenu from './components/OptionMenu';
 import ThemesMenu from './components/helpers/Themes';
 import Modals from './components/helpers/Modals';
 import ModalsFile from './components/helpers/ModalsFile';
+import ModalShow from './components/helpers/ModalShow';
 import {Badge} from 'reactstrap';
 import {connect} from 'react-redux';
 import './App.css';
@@ -30,6 +31,7 @@ class App extends Component{
         <Footer></Footer>
         <Modals></Modals>
         <ModalsFile></ModalsFile>
+        <ModalShow></ModalShow>
       </div>
     );
   }

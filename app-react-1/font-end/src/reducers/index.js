@@ -5,6 +5,7 @@ import singIn from './singIn';
 import modalsFile from './modalsFile';
 import uploadImage from './uploadImage';
 import delImage from './deleteImage';
+import openModalShow from './openModalShow';
 import { combineReducers } from 'redux';
 
 const myReducer = combineReducers({
@@ -14,7 +15,8 @@ const myReducer = combineReducers({
     singIn : singIn,
     modalsFile : modalsFile,
     uploadImage : uploadImage,
-    delImage : delImage
+    delImage : delImage,
+    openModalShow : openModalShow,
 });
 
 export default myReducer;

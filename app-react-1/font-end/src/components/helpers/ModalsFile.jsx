@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Modal, ModalHeader, ModalBody, ModalFooter,Input,Button } from 'reactstrap';
+import {Modal, ModalHeader, ModalBody, ModalFooter,Input,Button,FormGroup,Label } from 'reactstrap';
 import { connect } from 'react-redux';
 import * as actions from './../../actions/index';
 
@@ -9,7 +9,11 @@ class ModalsFile extends Component {
         super(props);
         this.state = {
             fileimages : '',
-            imagePreviewUrl : '',
+						imagePreviewUrl : '',
+						name : '',
+						description : '',
+						price : '',
+						author : '',
         }
     }
 
@@ -26,16 +30,42 @@ class ModalsFile extends Component {
           }
       
         if(file) reader.readAsDataURL(file);
-    }
+		}
+		
+		handleNameChange = (e) => {
+			this.setState({
+				name : e.target.value
+			})
+		}
+
+		handleDescriptionChange = (e) => {
+			this.setState({
+				description : e.target.value
+			})
+		}
+
+		handlePriceChange = (e) => {
+			this.setState({
+				price : e.target.value
+			})
+		}
+
+		handleAuthorChange = (e) => {
+			this.setState({
+				author : e.target.value
+			})
+		}
 
     handleSubmit = (e) => {
         let formData = new FormData();
         formData.append('file', this.state.fileimages, this.state.fileimages.name)
         formData.append('temp',this.props.temp);
-        // formData.append('imagePreviewUrl',this.state.imagePreviewUrl);
-        
+				formData.append('name',this.state.name);
+				formData.append('description',this.state.description);
+        formData.append('price',this.state.price);
+        formData.append('author',this.state.author);
         this.props.handleSubmit(formData,this.props.url,this.state.imagePreviewUrl);
-    }
+		}
 
     render() {
         return (
@@ -43,10 +73,27 @@ class ModalsFile extends Component {
                 <Modal isOpen={this.props.isOpen}>
                     <ModalHeader toggle={this.toggleModal}>{this.props.title}</ModalHeader>
                     <ModalBody>
-                      <Input type="file" onChange={this.handeleFileChosen}></Input>
+											<FormGroup>
+          							<Label for="exampleName">Name</Label>
+          							<Input type="text" name="text" onChange={this.handleNameChange} id="exampleName" placeholder="Name" />
+        							</FormGroup>
+											<FormGroup>
+          							<Label for="exampleDescription">Description</Label>
+          							<Input type="textarea" name="text" onChange={this.handleDescriptionChange} id="exampleDescription" placeholder="Description" />
+        							</FormGroup>
+											<FormGroup>
+          							<Label for="examplePrice">Price (VND)</Label>
+          							<Input type="number" name="number" min = {0} onChange={this.handlePriceChange} id="examplPrice" placeholder="Price" />
+        							</FormGroup>
+											<FormGroup>
+          							<Label for="exampleAuthor">Author</Label>
+          							<Input type="text" name="text" min = {0} onChange={this.handleAuthorChange} id="exampleAuthor" placeholder="author" />
+        							</FormGroup>
+											<Label for="exampleFile">InputFile</Label>
+                      <Input type="file" id="exampleFile" onChange={this.handeleFileChosen}></Input>
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="primary" disabled={!this.state.fileimages} onClick={this.handleSubmit}>Upload</Button>
+                        <Button color="primary" disabled={!(this.state.fileimages && this.state.name && this.state.description && this.state.price && this.state.author)} onClick={this.handleSubmit}>Upload</Button>
                         <Button color="danger" onClick={this.props.isToggleModalsFile}>Hủy</Button>
                     </ModalFooter>
                 </Modal>

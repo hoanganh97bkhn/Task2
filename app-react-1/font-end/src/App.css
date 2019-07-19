@@ -112,6 +112,10 @@ ul .nav-item :hover{
     margin-top: 10px
 }
 
+textarea.form-control {
+    height: 200px;
+}
+
 @media (max-width: 1200px){
     .btn-trial {width: 250px;margin-bottom: 5px}
     .btn-login {width: 250px}
