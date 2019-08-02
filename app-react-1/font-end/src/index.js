@@ -17,6 +17,7 @@ const store = createStore(myReducer, applyMiddleware(sagaMiddleware));
 sagaMiddleware.run(watchSaga.watchSingIn);
 sagaMiddleware.run(watchSaga.watchUpload);
 sagaMiddleware.run(watchSaga.watchDelImage);
+sagaMiddleware.run(watchSaga.watchRegister);
 
 ReactDOM.render(
     <Provider store={store}> <App /> </Provider>,

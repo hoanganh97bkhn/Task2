@@ -179,6 +179,16 @@ textarea.form-control {
     text-transform: capitalize;
     color: #0b75b6;
 }
+a.link-register{
+    color: #dd1f1f;
+    cursor: pointer;
+}
+.radioCheck{
+    cursor: pointer;
+}
+div.btn-submit{
+    text-align: end
+}
 @media (max-width: 1200px){
     .btn-trial {width: 250px;margin-bottom: 5px}
     .btn-login {width: 250px}

@@ -15,13 +15,20 @@ let myReducer = (state = initialState,action) => {
                 initialState = [...initialState,action.data.data]
             }
             else if(action.data.message === "edit-success"){
-                initialState[action.data.temp] = action.data.data;
+                initialState.forEach((item, index)=>{
+                    if(item._id === action.data.data._id){
+                        initialState[index] = action.data.data;
+                    }
+                })
             }
             return initialState;
         case types.DEL_SUCCESS :
             if(action.data.message === "delete-success"){
                 action.listData.forEach((element,index) => {
-                    initialState.splice(element-index,1)
+                    initialState = initialState.filter((temp, i) => {
+                        if(temp._id === element) return false;
+                        else return true;
+                    })
                 });
             }
             return initialState;

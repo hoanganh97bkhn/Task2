@@ -7,7 +7,6 @@ let myReducer = (state = initialState,action) => {
         state.temp = action.data.temp;
         state.title = action.data.title;
         state.url = action.data.url;
-        console.log(state)
         return state;
     }
     else if(action.type === types.UPLOAD_SUCCESS){

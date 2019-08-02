@@ -38,7 +38,7 @@ class Home extends Component{
 
 const mapStatetoProps = (state)=>{
   return{
-    onSingIn : state.singIn
+    onSingIn : state.singIn.status
   }
 }
 

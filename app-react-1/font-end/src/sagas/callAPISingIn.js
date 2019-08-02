@@ -2,18 +2,18 @@ import { takeLatest, call, put } from 'redux-saga/effects'
 import axios from 'axios';
 import config from "../config/index"
 
-function signupApi(id,pass){
+function signupApi(emailLogin,passLogin){
   return axios({
     method: "POST",
     url: `${config.baseUrl}/api/sing-in`,
-    data : {id:id,pass:pass}
+    data : {emailLogin, passLogin}
   });
 }
 
 function* signupFlow(action){
-  const { id, pass } = action.data
+  const { emailLogin, passLogin } = action.data
   try {
-    const response = yield call(signupApi,id,pass); 
+    const response = yield call(signupApi,emailLogin,passLogin); 
     const data = response.data;
     yield put({ type: "SIGNUP_SUCCESS", data })
   } catch(error){

@@ -1,14 +1,15 @@
 import * as types from '../constants/ActionTypes'
 
-let initialState = false;
+let initialState = {status: false};
 
 let myReducer = (state = initialState,action) => {
 
     switch(action.type){
         case types.SIGNUP_SUCCESS :
-            console.log(action.data);
             if(action.data.message === "success"){
-                state = true;
+                state.status = true;
+                state.author = action.data.author;
+                state.permissions = action.data.permissions
                 return state;
             }    
         default : 

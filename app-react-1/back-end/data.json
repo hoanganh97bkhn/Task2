@@ -1,1 +1,49 @@
-[{"id":0,"name":"hello","description":"fawdad dawdawdasdw","price":"123","author":"hello","utilities":"dawds,dawdasadw","path":"public/images/upload_46dd1a26f1e4bd529856424a9734ea7f","imageUrl":"images/upload_46dd1a26f1e4bd529856424a9734ea7f","model":0,"good":1,"createAt":"2019-7-22"},{"id":1,"name":"hello","description":"1111111111","price":"123","author":"hello","utilities":"111","path":"public/images/upload_294ec74d155c60829415a2bbaa1d457d.jpeg","imageUrl":"images/upload_294ec74d155c60829415a2bbaa1d457d.jpeg","model":1,"good":1,"createAt":"2019-7-22"},{"id":2,"name":"hello","description":"11111111","price":"123","author":"hello","utilities":"111,dawdasd,123","path":"public/images/upload_4a0310e44fd4bc21fc6c8c5bc5025a51.jpeg","imageUrl":"images/upload_4a0310e44fd4bc21fc6c8c5bc5025a51.jpeg","model":1,"good":1,"createAt":"2019-7-22"},{"id":3,"name":"hello","description":"Giao dien dep vo cung\nTin tao di","price":"100","author":"hello","utilities":"Chay ok,Bug deu dan,Gia dat","path":"public/images/upload_9f76d253a1472f34fba017e913daf4b2.jpeg","imageUrl":"images/upload_9f76d253a1472f34fba017e913daf4b2.jpeg","model":0,"good":1,"createAt":"2019-7-22"}]
+[{
+  "id": 0,
+  "name": "hello",
+  "description": "fawdad dawdawdasdw",
+  "price": "123",
+  "author": "hello",
+  "utilities": "dawds,dawdasadw",
+  "path": "public/images/upload_46dd1a26f1e4bd529856424a9734ea7f",
+  "imageUrl": "images/upload_46dd1a26f1e4bd529856424a9734ea7f",
+  "model": 0,
+  "good": 1,
+  "createAt": "2019-7-22"
+}, {
+  "id": 1,
+  "name": "hello",
+  "description": "1111111111",
+  "price": "123",
+  "author": "hello",
+  "utilities": "111",
+  "path": "public/images/upload_294ec74d155c60829415a2bbaa1d457d.jpeg",
+  "imageUrl": "images/upload_294ec74d155c60829415a2bbaa1d457d.jpeg",
+  "model": 1,
+  "good": 1,
+  "createAt": "2019-7-22"
+}, {
+  "id": 2,
+  "name": "hello",
+  "description": "11111111",
+  "price": "123",
+  "author": "hello",
+  "utilities": "111,dawdasd,123",
+  "path": "public/images/upload_4a0310e44fd4bc21fc6c8c5bc5025a51.jpeg",
+  "imageUrl": "images/upload_4a0310e44fd4bc21fc6c8c5bc5025a51.jpeg",
+  "model": 1,
+  "good": 1,
+  "createAt": "2019-7-22"
+}, {
+  "id": 3,
+  "name": "hello",
+  "description": "Giao dien dep vo cung\nTin tao di",
+  "price": "100",
+  "author": "hello",
+  "utilities": "Chay ok,Bug deu dan,Gia dat",
+  "path": "public/images/upload_9f76d253a1472f34fba017e913daf4b2.jpeg",
+  "imageUrl": "images/upload_9f76d253a1472f34fba017e913daf4b2.jpeg",
+  "model": 0,
+  "good": 1,
+  "createAt": "2019-7-22"
+}]

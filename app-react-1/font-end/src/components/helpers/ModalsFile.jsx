@@ -21,6 +21,12 @@ class ModalsFile extends Component {
         }
     }
 
+    componentWillReceiveProps (){
+        this.setState({
+            author: this.props.author
+        })
+    }
+
     handeleFileChosen = (e) => {
         let reader = new FileReader();
         let file = e.target.files[0];
@@ -90,12 +96,6 @@ class ModalsFile extends Component {
 			})
 		}
 
-		handleAuthorChange = (e) => {
-			this.setState({
-				author : e.target.value
-			})
-		}
-
     handleSubmit = (e) => {
         let formData = new FormData();
         formData.append('file', this.state.fileimages, this.state.fileimages.name)
@@ -152,15 +152,11 @@ class ModalsFile extends Component {
           					<Label for="examplePrice">Price (VND)</Label>
           					<Input type="number" name="number" min = {0} onChange={this.handlePriceChange} id="examplPrice" placeholder="Price" value={this.state.price}/>
         				</FormGroup>
-						<FormGroup>
-          					<Label for="exampleAuthor">Author</Label>
-          					<Input type="text" name="text" min = {0} onChange={this.handleAuthorChange} id="exampleAuthor" placeholder="author" />
-        					</FormGroup>
 						<Label for="exampleFile">InputFile</Label>
                         <Input type="file" id="exampleFile" onChange={this.handeleFileChosen}></Input>	            
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="primary" disabled={!(this.state.fileimages && this.state.name && this.state.description && this.state.price && this.state.author && this.state.listUtilities.length)} onClick={this.handleSubmit}>Upload</Button>
+                        <Button color="primary" disabled={!(this.state.fileimages && this.state.name && this.state.description && this.state.price && this.state.listUtilities.length)} onClick={this.handleSubmit}>Upload</Button>
                         <Button color="danger" onClick={this.props.isToggleModalsFile}>Hủy</Button>
                     </ModalFooter>
                 </Modal>
@@ -175,6 +171,7 @@ const mapStateToProps = (state) => {
         title : state.modalsFile.title,
         url : state.modalsFile.url,
         temp : state.modalsFile.temp,
+        author : state.singIn.author
     }
 }
 
