@@ -16,7 +16,6 @@ function* signupFlow(action){
     const response = yield call(uploadApi,formData,url); 
     const data = response.data;
     data.data.imagePreviewUrl = imagePreviewUrl;
-    console.log(data);
     yield put({ type: "UPLOAD_SUCCESS", data})
   } catch(error){
     yield put({ type: "UPLOAD_ERROR", error })

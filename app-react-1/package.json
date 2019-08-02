@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "bcrypt": "3.0.6",
+    "bluebird": "^3.5.5"
+  }
+}

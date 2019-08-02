@@ -11,7 +11,7 @@ let myReducer = (state = initialState,action) => {
         state.description = action.data.description;
         state.price = action.data.price;
         state.author = action.data.author;
-        state.id = action.data.id
+        state.id = action.data._id
         return state;
     }
     return state;

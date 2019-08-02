@@ -59,6 +59,13 @@ export const callApiSingIn = (data) => {
     }
 }
 
+export const callApiRegister = (data) => {
+    return {
+        type : types.CALL_API_REGISTER,
+        data
+    }
+}
+
 export const callApiUpload = (formData,url,imagePreviewUrl) => {
     return {
         type : types.CALL_API_UPLOAD,
@@ -94,5 +101,11 @@ export const openPageDetail = (id) => {
     return {
         type : types.OPEN_MODAL_SHOW,
         data : id
+    }
+}
+
+export const formChange = () => {
+    return {
+        type : types.FORM_CHANGE,
     }
 }

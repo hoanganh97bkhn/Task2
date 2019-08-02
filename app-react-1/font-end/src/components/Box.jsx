@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import * as actions from './../actions/index';
-import {FormGroup,Label,Input,Button} from 'reactstrap';
+import {FormGroup,Label,Input,Button,Modal,ModalHeader,ModalBody,ModalFooter} from 'reactstrap';
 import config from './../config/index'
 import axios from 'axios';
 class Box extends Component {
@@ -10,6 +10,7 @@ class Box extends Component {
         this.state={
           temp : 0,
           listDel : [],
+          isModal : false
         }
     }
 
@@ -26,30 +27,78 @@ class Box extends Component {
         });
     }
 
-    toggleModalFiles = (index)=>{
-      const temp = index;
-      const title="Sửa danh sách";
-      const url="edit-image";
-      this.props.toggleModalFiles(temp,title,url);
-      this.setState({
-        temp:index,
-      })
-    }
-
-    ClickCheckDel = (index) => {
-      if(this.state.listDel.indexOf(index) < 0){
-        this.setState({
-          listDel : [...this.state.listDel,index]
-        })
+    toggleModalFiles = (index, author)=>{
+      if(this.props.permissions != "adminUp"){
+        if(this.props.author != author){
+          this.setState({
+            isModal : true
+          })
+        }
+        else {
+          const temp = index;
+          const title="Sửa danh sách";
+          const url="edit-image";
+          this.props.toggleModalFiles(temp,title,url);
+          this.setState({
+            temp:index,
+          })
+        }
       }
       else {
+        const temp = index;
+        const title="Sửa danh sách";
+        const url="edit-image";
+        this.props.toggleModalFiles(temp,title,url);
         this.setState({
-          listDel : this.state.listDel.filter((item, i)=>{
-            if(item === index) return false;
-            else return true;
-          })
+          temp:index,
         })
       }
+    }
+
+    ClickCheckDel = (index, author) => {
+      if(this.props.permissions != "adminUp"){
+        if(this.props.author != author){
+          this.setState({
+            isModal : true
+          })
+        }
+        else {
+          if(this.state.listDel.indexOf(index) < 0){
+            this.setState({
+              listDel : [...this.state.listDel,index]
+            })
+          }
+          else {
+            this.setState({
+              listDel : this.state.listDel.filter((item, i)=>{
+                if(item === index) return false;
+                else return true;
+              })
+            })
+          }
+        }
+      }
+      else {
+        if(this.state.listDel.indexOf(index) < 0){
+          this.setState({
+            listDel : [...this.state.listDel,index]
+          })
+        }
+        else {
+          this.setState({
+            listDel : this.state.listDel.filter((item, i)=>{
+              if(item === index) return false;
+              else return true;
+            })
+          })
+        }
+      }
+    }
+
+    toggle = ()=>{
+      this.setState({
+        isModal: !this.state.isModal
+      });
     }
 
     handleDel = () => {
@@ -79,14 +128,14 @@ class Box extends Component {
                 <div className="view container btn-group-vertical" /*style={{display:  this.state.showStore === index ? 'block' : 'inline-flex' }}*/>
                   <button className="btn btn-danger d-block my-3 w-75 mx-auto">Xem DeMo</button>
                   <button className="btn btn-primary d-block w-75 mx-auto" onClick={(e)=>{this.onClickDetail(item)}}>Xem Chi Tiet</button>
-                  {this.props.onSingIn ? <button className="btn btn-danger d-block mt-3 w-75 mx-auto" onClick={ (e) => {this.toggleModalFiles(index)}}>Sửa</button> : null}                  
+                  {this.props.onSingIn ? <button className="btn btn-danger d-block mt-3 w-75 mx-auto" onClick={ (e) => {this.toggleModalFiles(item._id, item.author)}}>Sửa</button> : null}                  
                 </div>
                 {this.props.delImage ? 
                 (
                 <div className="check-delete">
                 <FormGroup check>
                   <Label check>
-                    <Input checked = {this.state.listDel.indexOf(index) >= 0} onChange={(e)=>{this.ClickCheckDel(index)}} type="checkbox" /> 
+                    <Input checked = {this.state.listDel.indexOf(index) >= 0} onChange={(e)=>{this.ClickCheckDel(item._id, item.author)}} type="checkbox" /> 
                       Check delete
                   </Label>
                 </FormGroup>
@@ -104,6 +153,15 @@ class Box extends Component {
           <div className="row justify-content-center my-5">
             <button className="btn btn-primary px-4 py-2">Xem Tất Cả Các Màu</button>
           </div>
+          <Modal isOpen={this.state.isModal} toggle={this.toggle} className={this.props.className}>
+            <ModalHeader toggle={this.toggle}>Cảnh báo</ModalHeader>
+              <ModalBody>
+                Bạn không có quyền thay đổi ảnh này
+              </ModalBody>
+              <ModalFooter>
+                <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+              </ModalFooter>
+          </Modal>
         </div>
             
         );
@@ -113,8 +171,10 @@ class Box extends Component {
 const mapStateToProps = (state) => {
   return {
     dataRender : state.sort,
-    onSingIn : state.singIn,
-    delImage : state.delImage
+    onSingIn : state.singIn.status,
+    delImage : state.delImage,
+    permissions : state.singIn.permissions,
+    author : state.singIn.author
   }
 }
 

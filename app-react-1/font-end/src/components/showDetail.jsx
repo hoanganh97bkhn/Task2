@@ -34,9 +34,9 @@ class showDetail extends Component {
          description : data.description,
          price : data.price,
          author : data.author,
-         utilities : data.utilities.split(','),
+         utilities : data.utilities[0].split(','),
          imageUrl : data.imageUrl,
-         id : data.id
+         id : data._id
         });
       })
       .catch((error) => console.log(error));

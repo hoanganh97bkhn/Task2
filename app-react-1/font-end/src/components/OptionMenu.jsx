@@ -70,7 +70,7 @@ class OptionMenu extends Component {
 
 const mapStateToProps = (state) =>{
     return {
-        onSingIn : state.singIn
+        onSingIn : state.singIn.status
     }
 }
 

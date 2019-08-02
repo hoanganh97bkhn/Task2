@@ -33,7 +33,7 @@ class showDetail extends Component{
 
 const mapStatetoProps = (state)=>{
   return{
-    onSingIn : state.singIn
+    onSingIn : state.singIn.status
   }
 }
 
